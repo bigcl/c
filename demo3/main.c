@@ -9,13 +9,14 @@ typedef struct {
     int length;
 }HString;
 
+//用于储存子串在父串的位置及次数
 typedef struct {
     int *index;
     int times;
 }SonIndex;
 
 //初始化串 （虽然我也不知道为什么要给基址先赋空值，不赋报错，什么堆出错，分配的指针地址是0*8）
-void InitString(HString *str){
+void InitString(HString *str, int i, char string[13]) {
 str->ch = NULL;
 str->length = 0;
 }
@@ -70,20 +71,29 @@ SonIndex IndexString(HString str,HString string){
 
 void main() {
     HString str,indexString;
-    InitString(&str);
-    InitString(&indexString);
+    InitString(&str, 0, NULL);
+    InitString(&indexString, 0, NULL);
     indexString.ch = "life";
     indexString.length = getLength("life");
     char a[50],b[50];
     FILE *fp1 = fopen("D:/c_tools/c_projects/demo3/text1.txt","r");
     FILE *fp2 = fopen("D:/c_tools/c_projects/demo3/text2.txt","r");
+    FILE *fp3 = fopen("D:/c_tools/c_projects/demo3/newfile.txt","w+");
     fgets(a,50,fp1);
     fgets(b,50,fp2);
     fclose(fp1);
     fclose(fp2);
+    printf("合并后的串:");
     InsertStr(&str,1,a);
-    InsertStr(&str,str.length+ getLength(indexString.ch),b);
-    printf("%s",str.ch);
+    InsertStr(&str,str.length + 1,b);
+    printf("%s\n",str.ch);
+    printf("检索的子串:%s",indexString.ch);
     SonIndex sonIndex = IndexString(str,indexString);
-    printf("%d",sonIndex.times);
+    printf("\n子串在父串出现的次数:%d\n",sonIndex.times);
+    printf("出现的位置:");
+    for(int i=0;i<sonIndex.times;i++){
+        printf("(%d,%d)",sonIndex.index[i]+1,sonIndex.index[i]+indexString.length);
+    }
+    fputs(str.ch,fp3);
+    fclose(fp3);
 }
