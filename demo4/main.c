@@ -80,7 +80,7 @@ void getRop(TSMatrix *matrix) {
                     matrix->rpos[i] = j;
             }
         }
-        printf("第%d行的第一个非零元位置:%d\n", i, matrix->rpos[i]);
+//        printf("第%d行的第一个非零元位置:%d\n", i, matrix->rpos[i]);
     }
 }
 
