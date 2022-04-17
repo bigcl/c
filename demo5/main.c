@@ -26,7 +26,7 @@ Status CreateBiTree(BiTree* biTree){
     }
 }
 
-void OutputBiTree(BiTree biTree){
+void PreOutputBiTree(BiTree biTree){
     if(biTree){
         printf("%d\t",biTree->data);
         OutputBiTree(biTree->leftchild);
@@ -34,6 +34,24 @@ void OutputBiTree(BiTree biTree){
     }
 }
 
+void InOutputBiTree(BiTree biTree)
+{
+    if (biTree)
+    {
+        OutputBiTree(biTree->leftchild);
+        printf("%d\t", biTree->data);
+        OutputBiTree(biTree->rightchild);
+    }
+}
+void PosOutputBiTree(BiTree biTree)
+{
+    if (biTree)
+    {
+        OutputBiTree(biTree->leftchild);
+        OutputBiTree(biTree->rightchild);
+        printf("%d\t", biTree->data);
+    }
+}
 //获得树的深度
 int GetBiTreeDeepth(BiTree biTree){                                         //使用递归 比较每个子树的左子树和右子树深度 获得每个子树的深度
     int deepth = 0;
