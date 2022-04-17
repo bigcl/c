@@ -11,22 +11,23 @@ typedef struct{
     struct BiNode *leftchild,*rightchild;
 }BiNode,*BiTree;
 
-//ÏÈĞò´´½¨¶ş²æÊ÷
+//å…ˆåºåˆ›å»ºäºŒå‰æ ‘
 Status CreateBiTree(BiTree* biTree){
     ElementType el;
     scanf("%d",&el);
-    if(el != 0) {            //ÊÇ·ñÎªÒ¶×Ó½Úµã
+    if(el != 0) {            //æ˜¯å¦ä¸ºå¶å­èŠ‚ç‚¹
         *biTree = (BiNode *) malloc(sizeof(BiNode));
         (*biTree)->data = el;
-        CreateBiTree(&(*biTree)->leftchild);                //´´½¨×ó×ÓÊ÷
-        CreateBiTree(&(*biTree)->rightchild);               //´´½¨ÓÒ×ÓÊ÷
+        CreateBiTree(&(*biTree)->leftchild);                //åˆ›å»ºå·¦å­æ ‘
+        CreateBiTree(&(*biTree)->rightchild);               //åˆ›å»ºå³å­æ ‘
     }
     else{
         *biTree = NULL;
     }
 }
 
-void OutputBiTree(BiTree biTree){
+
+void PreOutputBiTree(BiTree biTree){
     if(biTree){
         printf("%d\t",biTree->data);
         OutputBiTree(biTree->leftchild);
@@ -34,8 +35,27 @@ void OutputBiTree(BiTree biTree){
     }
 }
 
-//»ñµÃÊ÷µÄÉî¶È
-int GetBiTreeDeepth(BiTree biTree){                                         //Ê¹ÓÃµİ¹é ±È½ÏÃ¿¸ö×ÓÊ÷µÄ×ó×ÓÊ÷ºÍÓÒ×ÓÊ÷Éî¶È »ñµÃÃ¿¸ö×ÓÊ÷µÄÉî¶È
+void InOutputBiTree(BiTree biTree)
+{
+    if (biTree)
+    {
+        OutputBiTree(biTree->leftchild);
+        printf("%d\t", biTree->data);
+        OutputBiTree(biTree->rightchild);
+    }
+}
+void PosOutputBiTree(BiTree biTree)
+{
+    if (biTree)
+    {
+        OutputBiTree(biTree->leftchild);
+        OutputBiTree(biTree->rightchild);
+        printf("%d\t", biTree->data);
+    }
+}
+
+//è·å¾—æ ‘çš„æ·±åº¦
+int GetBiTreeDeepth(BiTree biTree){                                         //ä½¿ç”¨é€’å½’ æ¯”è¾ƒæ¯ä¸ªå­æ ‘çš„å·¦å­æ ‘å’Œå³å­æ ‘æ·±åº¦ è·å¾—æ¯ä¸ªå­æ ‘çš„æ·±åº¦
     int deepth = 0;
     if(biTree){
         deepth++;
@@ -51,5 +71,5 @@ void main(){
     BiTree biTree;
     CreateBiTree(&biTree);
     OutputBiTree(biTree);
-    printf("\n¶ş²æÊ÷³¤¶ÈÎª£º%d", GetBiTreeDeepth(biTree));
+    printf("\näºŒå‰æ ‘é•¿åº¦ä¸ºï¼š%d", GetBiTreeDeepth(biTree));
 }
