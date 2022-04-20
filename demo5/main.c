@@ -26,6 +26,23 @@ Status CreateBiTree(BiTree* biTree){
     }
 }
 
+/*
+ * 插入搜索树
+ * biTree->leftchild = Insert(e,biTree->leftchild);   是为了将树连接在一起 如果不是插入位置即不是叶子结点 则树的左右子树还按照原来连接 否则就是做插入操作了
+ */
+BiTree Insert(ElementType e,BiTree biTree){
+    //若为根节点 则分配内存 准备做插入
+    if(!biTree){
+        biTree = (BiNode *) malloc(sizeof (BiNode));
+        biTree->data = e;
+        biTree->leftchild = biTree->rightchild = NULL;
+    } else{
+        if(e < biTree->data) biTree->leftchild = Insert(e,biTree->leftchild);           //如果比左边小        往左子树插
+        if(e > biTree->data) biTree->rightchild = Insert(e,biTree->rightchild);          //如果比右边大        往右子树插
+    }
+    return biTree;
+}
+
 void OutputBiTree(BiTree biTree){
     if(biTree){
         printf("%d\t",biTree->data);
@@ -51,5 +68,8 @@ void main(){
     BiTree biTree;
     CreateBiTree(&biTree);
     OutputBiTree(biTree);
-    printf("\n二叉树长度为：%d", GetBiTreeDeepth(biTree));
+    printf("\n二叉树深度为：%d\n", GetBiTreeDeepth(biTree));
+    Insert(29,biTree);
+    OutputBiTree(biTree);
+    printf("\n二叉树深度为：%d\n", GetBiTreeDeepth(biTree));
 }

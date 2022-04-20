@@ -6,7 +6,7 @@ import java.util.Queue;
  */
 public class CengXuBianLi {
     public static void main(String[] args) {
-        BiNode node1,node2,node3,node4 = null;
+        BiNode node1,node2,node3,node4;
         node4 = new BiNode(4,null,null);
         node3 = new BiNode(3,null,null);
         node2 = new BiNode(2,node4,null);
