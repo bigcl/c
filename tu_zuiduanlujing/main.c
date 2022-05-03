@@ -5,6 +5,8 @@
 int GetShortestPath(Vertex V,Graph graph);
 //单源有权图的最短路径(Dijkstra算法)
 void Dijkstra(Graph graph,Vertex V);
+//多源有权图
+void Floyd(Graph graph);
 int main(){
     int NV;
     Graph graph;
@@ -22,7 +24,9 @@ int main(){
     }
     printf("\n");
     BFS(graph,1,Visited);
-
+//    BuildGraph(graph);
+//    Floyd(graph);
+//    Dijkstra(graph,1);
 }
 
 //无权图的最短路径
@@ -98,3 +102,46 @@ void Dijkstra(Graph graph,Vertex V){
 
 }
 
+
+
+void Floyd(Graph graph){
+    //定义距离的矩阵和路径矩阵
+    int D[graph->Nv + 1][graph->Nv + 1],Path[graph->Nv + 1][graph->Nv + 1];
+
+    //初始化矩阵
+    for(int i = 1;i <= graph->Nv; i++){
+        for(int j = 1; j <= graph->Nv;j++){
+            Path[i][j] = -1;
+            if(i == j){
+                D[i][j] = 0;
+            } else D[i][j] = 9999;
+        }
+    }
+
+    //给每个顶点的临边赋值
+    for(int V = 1;V <= graph->Nv;V++){
+        for(PtrToAdjNode W = graph->adjList[V].firstEdge;W;W = W->next){
+            D[V][W->m] = W->wight;
+            Path[V][W->m] = V;
+        }
+    }
+
+    //下面开始将每个顶点回收
+    for(int N = 1;N <= graph->Nv;N++){
+        for(int i = 1; i<= graph->Nv;i++){
+            for(int j = 1;j <= graph->Nv;j++){
+                if(D[i][j] > D[i][N] + D[N][j]){
+                    D[i][j] = D[i][N] + D[N][j];
+                    Path[i][j] = N;
+                }
+            }
+        }
+    }
+    printf("到每个点最近距离为：\n");
+    for(int i = 1;i <= graph->Nv;i++){
+        for(int j = 1;j <= graph->Nv;j++){
+            printf("%d\t",D[i][j]);
+        }
+        printf("\n");
+    }
+}
