@@ -122,6 +122,9 @@ int main(){
     printf("\n选择排序：\n");
     XuanZePaiXu(array,20);
     PrintArray(array,20);
+    for(int i = 0;i < 20; i++){
+        array[i] = rand()%501;      //生成范围在500内随机数
+    }
     printf("\n快速排序：\n");
     QuicklySort(array,0,19);
     PrintArray(array,20);
