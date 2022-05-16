@@ -99,6 +99,39 @@ void QuicklySort(int *array,int left, int right){
     QuicklySort(array,i+1 ,right);
 }
 
+
+//堆排序
+//将以p为根节点的子堆调整为最大堆
+//前提条件是在进行操作之前，堆就是正确排列的
+void PreDown(int *maxHeap, int p, int N){
+    int temp = maxHeap[p];//将要下滤的节点保存
+    int Parent = p,Child;
+    //循环的条件就是判断其左孩子是否存在
+    for(Parent = p;Parent * 2 + 1 <= N - 1 ;Parent = Child){
+        Child = Parent * 2 + 1;
+        //此处判断是否有右孩子，并且右孩子比左孩子要大
+        if(Parent * 2 + 2 <= N - 1 && maxHeap[Parent * 2 + 1] < maxHeap[Parent * 2 + 2]){
+            Child++;                        //从左右孩子里找最大的
+        }
+        if(maxHeap[Child] < temp) break;
+        else{
+            maxHeap[Parent] = maxHeap[Child];
+        }
+    }
+    maxHeap[Parent] = temp;                         //此时Parent就是他要调整的位置
+}
+
+
+void BuildMaxHeap(int *maxHeap, int N){
+    for(int i = (N - 1) / 2; i >= 0; i--){
+        PreDown(maxHeap,i,N);
+    }
+}
+
+
+
+
+
 void PrintArray(int *array,int length){
     for(int i = 0; i < length; i++){
         printf("%d   ",array[i]);
@@ -106,26 +139,19 @@ void PrintArray(int *array,int length){
 }
 
 int main(){
-    int array[20];
-    for(int i = 0;i < 20; i++){
-        array[i] = rand()%501;      //生成范围在500内随机数
+    int array[6];
+    array[0] = 3;
+    array[1] = 4;
+    array[2] = 6;
+    array[3] = 1;
+    array[4] = 5;
+    array[5] = 7;
+
+    BuildMaxHeap(array,6);
+
+    for( int i = 5; i >=0 ;i--){
+        Swap(&array[i],&array[0]);
+        PreDown(array,0,i);
     }
-    printf("冒泡排序：\n");
-    MaoPaoPaiXu(array,20);
-    PrintArray(array,20);
-    printf("\n插入排序：\n");
-    ChaRuPaiXu(array,20);
-    PrintArray(array,20);
-    printf("\n希尔排序：\n");
-    XiErPaiXu(array,20);
-    PrintArray(array,20);
-    printf("\n选择排序：\n");
-    XuanZePaiXu(array,20);
-    PrintArray(array,20);
-    for(int i = 0;i < 20; i++){
-        array[i] = rand()%501;      //生成范围在500内随机数
-    }
-    printf("\n快速排序：\n");
-    QuicklySort(array,0,19);
-    PrintArray(array,20);
+    PrintArray(array,6);
 }
