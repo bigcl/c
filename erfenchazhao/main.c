@@ -7,7 +7,7 @@ int main() {
 }
 
 int erfenchazhao(int num,int* arry,int length){
-    int left = 0,right = length - 1;
+    int left = -1,right = length;                               //初始化必须是左边-1右边length
     int mid = (left + right)/2;
     while(left <= right){
         if(num < arry[mid]){
