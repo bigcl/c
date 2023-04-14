@@ -10,7 +10,7 @@ void Swap(int* a,int* b){
     *b = temp;
 }
 
-//Ã°ÅİÅÅĞò£¨´ÓĞ¡µ½´ó£©
+//å†’æ³¡æ’åºï¼ˆä»å°åˆ°å¤§ï¼‰
 void MaoPaoPaiXu(int *array, int length){
     for(int i = length - 1;i >= 0 ;i--){
         int flag = 0;
@@ -20,16 +20,16 @@ void MaoPaoPaiXu(int *array, int length){
                 flag = 1;
             }
         }
-        if(flag == 0) break;                    //Èô´ÓÍ·µ½Î»¶¼Ã»ÓĞ·¢Éú½»»» ÔòÒÑ¾­ÊÇÓĞĞòµÄ ÍË³öÅÅĞò
+        if(flag == 0) break;                    //è‹¥ä»å¤´åˆ°ä½éƒ½æ²¡æœ‰å‘ç”Ÿäº¤æ¢ åˆ™å·²ç»æ˜¯æœ‰åºçš„ é€€å‡ºæ’åº
     }
 }
 
-//²åÈëÅÅĞò
+//æ’å…¥æ’åº
 void ChaRuPaiXu(int *array,int length){
-    for(int N = 1;N < length;N++){      //´ÓµÚ¶ş¸ö¿ªÊ¼²å
-        int Temp = array[N];            //¼ÇÂ¼Òª²åµÄÊıÖµ
+    for(int N = 1;N < length;N++){      //ä»ç¬¬äºŒä¸ªå¼€å§‹æ’
+        int Temp = array[N];            //è®°å½•è¦æ’çš„æ•°å€¼
         int Pre;
-        for(Pre = N; Pre >= 0 && array[Pre-1] > Temp;Pre--){        //ÈôÒª²åµÄÊıÖµ±ÈÇ°Ò»ÕÅÅÆĞ¡£¬Ç°Ò»ÕÅÅÆºóÒÆ£¬Ò»Ö±µ½ºÏÊÊµÄÎ»ÖÃ
+        for(Pre = N; Pre >= 0 && array[Pre-1] > Temp;Pre--){        //è‹¥è¦æ’çš„æ•°å€¼æ¯”å‰ä¸€å¼ ç‰Œå°ï¼Œå‰ä¸€å¼ ç‰Œåç§»ï¼Œä¸€ç›´åˆ°åˆé€‚çš„ä½ç½®
             array[Pre] = array[Pre - 1];
         }
         array[Pre] = Temp;
@@ -37,9 +37,9 @@ void ChaRuPaiXu(int *array,int length){
 }
 
 
-//Ï£¶ûÅÅĞò(ÔöÁ¿ĞòÁĞ²»»¥ÖÊ£¬È·±£Ö®Ç°µÄÅÅĞò¶Ô×îºóÔöÁ¿ĞòÁĞÎª1Ê±ÅÅĞòÏû³ıµÄÄæĞò¶Ô)
+//å¸Œå°”æ’åº(å¢é‡åºåˆ—ä¸äº’è´¨ï¼Œç¡®ä¿ä¹‹å‰çš„æ’åºå¯¹æœ€åå¢é‡åºåˆ—ä¸º1æ—¶æ’åºæ¶ˆé™¤çš„é€†åºå¯¹)ï¼ˆé”™è¯¯ä»£ç ï¼‰
 void XiErPaiXu(int *array,int length){
-    for(int D = length/5;D >= 1;D = D/2){       //Ã¿´ÎÑ­»·¶¼±£Ö¤¼ä¸ôÎªDÊÇÓĞĞòµÄ Ò»Ö±µ½¼ä¸ôÎª1 ÎªËûÏû³ı½Ï¶àµÄÄæĞòÁĞ
+    for(int D = length/5;D >= 1;D = D/2){       //æ¯æ¬¡å¾ªç¯éƒ½ä¿è¯é—´éš”ä¸ºDæ˜¯æœ‰åºçš„ ä¸€ç›´åˆ°é—´éš”ä¸º1 ä¸ºä»–æ¶ˆé™¤è¾ƒå¤šçš„é€†åºåˆ—
         for(int N = D;N < length;N = N + D){
             int Temp = array[N];
             int Pre;
@@ -51,10 +51,10 @@ void XiErPaiXu(int *array,int length){
     }
 }
 
-//Ñ¡ÔñÅÅĞò·¨ Ã¿´Î½«Î´ÅÅĞòµÄ×îĞ¡Öµ ²åÈëµ½ÒÑÅÅĞòµÄÄ©Î²
+//é€‰æ‹©æ’åºæ³• æ¯æ¬¡å°†æœªæ’åºçš„æœ€å°å€¼ æ’å…¥åˆ°å·²æ’åºçš„æœ«å°¾
 void XuanZePaiXu(int *array,int length){
     int minIndex;
-    //±éÀúÒÑÅÅĞòµÄÎ»ÖÃ
+    //éå†å·²æ’åºçš„ä½ç½®
     for(int i = 0;i < length;i++){
         int min = 9999;
         for(int j = i ;j < length; j++){
@@ -67,7 +67,7 @@ void XuanZePaiXu(int *array,int length){
     }
 }
 
-//ÕÒÖ÷Ôª£¬²ÉÈ¡Ñ°ÕÒÖĞÎ»ÊıµÄ·½·¨ ²¢½«×óÓÒ±ß½ç°´´óĞ¡Ë³ĞòÅÅºÃ£¬È»ºó½«Ö÷Ôª·ÅÔÚright - 1µÄÎ»ÖÃÉÏ£¬·½±ãÅÅĞòÑ°ÕÒ
+//æ‰¾ä¸»å…ƒï¼Œé‡‡å–å¯»æ‰¾ä¸­ä½æ•°çš„æ–¹æ³• å¹¶å°†å·¦å³è¾¹ç•ŒæŒ‰å¤§å°é¡ºåºæ’å¥½ï¼Œç„¶åå°†ä¸»å…ƒæ”¾åœ¨right - 1çš„ä½ç½®ä¸Šï¼Œæ–¹ä¾¿æ’åºå¯»æ‰¾
 void FindPivot(int *array, int left, int right){
     int mid = (left + right) / 2;
     if(array[left] > array[right]){
@@ -82,43 +82,43 @@ void FindPivot(int *array, int left, int right){
     Swap(&array[mid],&array[right-1]);
 }
 
-//¿ìËÙÅÅĞò Ñ¡È¡Ö÷Ôª½«ÆäÒ»´ÎĞÔ·ÅÔÚ¶ÔµÄÎ»ÖÃ
+//å¿«é€Ÿæ’åº é€‰å–ä¸»å…ƒå°†å…¶ä¸€æ¬¡æ€§æ”¾åœ¨å¯¹çš„ä½ç½®
 void QuicklySort(int *array,int left, int right){
     FindPivot(array,left,right);
-    if(left >= right - 2) return;                            //µ±ÒªÅÅĞòµÄ½öÎª3¸öÊıÊ±£¬ÔÚÕÒÖ÷ÔªµÄÊ±ºò¾ÍÒÑ¾­°ÑÕâÈı¸öÊı×ÖÅÅĞò£¬¼´¿É·µ»Ø
-    int i = left + 1,j = right - 2, pivot = array[right-1];         //Éè¶¨×óÓÒÖ¸Õë¿ªÊ¼Î»ÖÃ
+    if(left >= right - 2) return;                            //å½“è¦æ’åºçš„ä»…ä¸º3ä¸ªæ•°æ—¶ï¼Œåœ¨æ‰¾ä¸»å…ƒçš„æ—¶å€™å°±å·²ç»æŠŠè¿™ä¸‰ä¸ªæ•°å­—æ’åºï¼Œå³å¯è¿”å›
+    int i = left + 1,j = right - 2, pivot = array[right-1];         //è®¾å®šå·¦å³æŒ‡é’ˆå¼€å§‹ä½ç½®
     while (1){
         while (array[i] < pivot){i++;}
-        while (array[j] > pivot){j--;}                                //½«iºÍjÍ£ÔÚÎ»ÖÃ²»¶ÔµÄÔªËØÉÏ
+        while (array[j] > pivot){j--;}                                //å°†iå’Œjåœåœ¨ä½ç½®ä¸å¯¹çš„å…ƒç´ ä¸Š
         if(i < j){
-            Swap(&array[i],&array[j]);                  //½«Î»ÖÃ²»¶ÔµÄÔªËØÏà»¥½»»»£¬Ê¹ÆäÎ»ÖÃÕıÈ·
+            Swap(&array[i],&array[j]);                  //å°†ä½ç½®ä¸å¯¹çš„å…ƒç´ ç›¸äº’äº¤æ¢ï¼Œä½¿å…¶ä½ç½®æ­£ç¡®
         } else break;
     }
-    Swap(&array[right-1],&array[i]);     //½«Ö÷Ôª»»µ½ÖĞ¼äÎ»ÖÃ£¨Ò»¶¨ÒªºÍi»»£¬ÒòÎªi´ËÊ±Ö¸ÏòµÄÊÇ±Èpivot´óµÄÊı×Ö£¬¿ÉÒÔ½«Æä»»µ½right-1¼´pivotÓÒ±ßµÄ¼¯ºÏ£©
+    Swap(&array[right-1],&array[i]);     //å°†ä¸»å…ƒæ¢åˆ°ä¸­é—´ä½ç½®ï¼ˆä¸€å®šè¦å’Œiæ¢ï¼Œå› ä¸ºiæ­¤æ—¶æŒ‡å‘çš„æ˜¯æ¯”pivotå¤§çš„æ•°å­—ï¼Œå¯ä»¥å°†å…¶æ¢åˆ°right-1å³pivotå³è¾¹çš„é›†åˆï¼‰
     QuicklySort(array,left,i-1);
     QuicklySort(array,i+1 ,right);
 }
 
 
-//¶ÑÅÅĞò
-//½«ÒÔpÎª¸ù½ÚµãµÄ×Ó¶Ñµ÷ÕûÎª×î´ó¶Ñ
-//Ç°ÌáÌõ¼şÊÇÔÚ½øĞĞ²Ù×÷Ö®Ç°£¬¶Ñ¾ÍÊÇÕıÈ·ÅÅÁĞµÄ
+//å †æ’åº
+//å°†ä»¥pä¸ºæ ¹èŠ‚ç‚¹çš„å­å †è°ƒæ•´ä¸ºæœ€å¤§å †
+//å‰ææ¡ä»¶æ˜¯åœ¨è¿›è¡Œæ“ä½œä¹‹å‰ï¼Œå †å°±æ˜¯æ­£ç¡®æ’åˆ—çš„
 void PreDown(int *maxHeap, int p, int N){
-    int temp = maxHeap[p];//½«ÒªÏÂÂËµÄ½Úµã±£´æ
+    int temp = maxHeap[p];//å°†è¦ä¸‹æ»¤çš„èŠ‚ç‚¹ä¿å­˜
     int Parent = p,Child;
-    //Ñ­»·µÄÌõ¼ş¾ÍÊÇÅĞ¶ÏÆä×óº¢×ÓÊÇ·ñ´æÔÚ
+    //å¾ªç¯çš„æ¡ä»¶å°±æ˜¯åˆ¤æ–­å…¶å·¦å­©å­æ˜¯å¦å­˜åœ¨
     for(Parent = p;Parent * 2 + 1 <= N - 1 ;Parent = Child){
         Child = Parent * 2 + 1;
-        //´Ë´¦ÅĞ¶ÏÊÇ·ñÓĞÓÒº¢×Ó£¬²¢ÇÒÓÒº¢×Ó±È×óº¢×ÓÒª´ó
+        //æ­¤å¤„åˆ¤æ–­æ˜¯å¦æœ‰å³å­©å­ï¼Œå¹¶ä¸”å³å­©å­æ¯”å·¦å­©å­è¦å¤§
         if(Parent * 2 + 2 <= N - 1 && maxHeap[Parent * 2 + 1] < maxHeap[Parent * 2 + 2]){
-            Child++;                        //´Ó×óÓÒº¢×ÓÀïÕÒ×î´óµÄ
+            Child++;                        //ä»å·¦å³å­©å­é‡Œæ‰¾æœ€å¤§çš„
         }
         if(maxHeap[Child] < temp) break;
         else{
             maxHeap[Parent] = maxHeap[Child];
         }
     }
-    maxHeap[Parent] = temp;                         //´ËÊ±Parent¾ÍÊÇËûÒªµ÷ÕûµÄÎ»ÖÃ
+    maxHeap[Parent] = temp;                         //æ­¤æ—¶Parentå°±æ˜¯ä»–è¦è°ƒæ•´çš„ä½ç½®
 }
 
 
